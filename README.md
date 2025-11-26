@@ -1,4 +1,4 @@
-# Brian & Megan - Wedding Website
+# Santalii - Wedding Website
 
 A beautiful, elegant wedding website for Brian & Megan's special day.
 
