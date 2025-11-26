@@ -1,6 +1,6 @@
 # Santalii - Wedding Website
 
-A beautiful, elegant wedding website for Brian & Megan's special day.
+A beautiful, elegant wedding website for Andreea & Andrei's special day.
 
 ## Features
 
