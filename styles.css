@@ -1,31 +1,5 @@
 /* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --text-light: #f5f5f5;
-    --text-dark: #2c2c2c;
-    --overlay-dark: rgba(0, 0, 0, 0.67);
-    --overlay-medium: rgba(0, 0, 0, 0.8);
-}
-
-body {
-    font-family: 'Lato', sans-serif;
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 4vw;
-}
 
 /* Header */
 .header {
@@ -33,8 +7,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--black);
-    color: var(--text-light);
+    background: #000000;
+    color: #f5f5f5;
     z-index: 1000;
     padding: 1.4vw 0;
     transition: background 0.3s ease;
@@ -57,7 +31,7 @@ body {
 }
 
 .nav-link {
-    color: var(--text-light);
+    color: #f5f5f5;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 400;
@@ -78,7 +52,7 @@ body {
 .dropdown-btn {
     background: none;
     border: none;
-    color: var(--text-light);
+    color: #f5f5f5;
     font-size: 0.95rem;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
@@ -91,7 +65,7 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background: var(--black);
+    background: #000000;
     min-width: 150px;
     padding: 1rem 0;
     margin-top: 0.5rem;
@@ -104,7 +78,7 @@ body {
 .dropdown-content a {
     display: block;
     padding: 0.5rem 1.5rem;
-    color: var(--text-light);
+    color: #f5f5f5;
     text-decoration: none;
     font-size: 0.9rem;
     text-transform: none;
@@ -121,7 +95,7 @@ body {
 }
 
 .header-logo a {
-    color: var(--text-light);
+    color: #f5f5f5;
     text-decoration: none;
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -136,8 +110,8 @@ body {
 
 .btn-rsvp {
     padding: 0.6rem 1.5rem;
-    border: 1px solid var(--text-light);
-    color: var(--text-light);
+    border: 1px solid #f5f5f5;
+    color: #f5f5f5;
     text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -147,8 +121,8 @@ body {
 }
 
 .btn-rsvp:hover {
-    background: var(--text-light);
-    color: var(--black);
+    background: #f5f5f5;
+    color: #000000;
 }
 
 .mobile-menu-toggle {
@@ -164,7 +138,7 @@ body {
 .mobile-menu-toggle span {
     width: 22px;
     height: 1px;
-    background: var(--text-light);
+    background: #f5f5f5;
     transition: all 0.3s ease;
 }
 
@@ -176,21 +150,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--white);
+    background: #ffffff;
 }
 
 .hero-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 1900px;
     margin: 0 auto;
-    padding: 0 4vw;
+    padding: 0 2vw;
 }
 
 .hero-grid {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
+    gap: 2vw;
     margin-bottom: 4rem;
 }
 
@@ -201,22 +175,22 @@ body {
 
 .hero-image-left,
 .hero-image-right {
-    width: 22vw;
-    max-width: 320px;
-    min-width: 200px;
-    height: 55vh;
-    max-height: 650px;
-    min-height: 400px;
+    width: min(20%, 500px);
+    max-width: 500px;
+    max-height: 750px;
+    aspect-ratio: 269 / 403;
+    min-width: 250px;
+    flex-shrink: 0;
 }
 
 .hero-image-main {
-    width: 32vw;
-    max-width: 480px;
-    min-width: 280px;
-    height: 75vh;
-    max-height: 900px;
-    min-height: 550px;
+    width: min(60vw, 1200px);
+    max-width: 626px;
+    max-height: 766px;
+    aspect-ratio: 626 / 766;
+    min-width: 400px;
     position: relative;
+    flex-shrink: 0;
 }
 
 .hero-image img {
@@ -241,7 +215,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-size: clamp(2.5rem, 5.5vw, 5rem);
     font-weight: 700;
-    color: var(--black);
+    color: #000000;
     text-align: center;
     letter-spacing: 4px;
     line-height: 1.2;
@@ -256,7 +230,7 @@ body {
 .hero-text h4 {
     font-size: clamp(0.75rem, 1.1vw, 0.95rem);
     font-weight: 400;
-    color: var(--black);
+    color: #000000;
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -293,14 +267,14 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--overlay-medium);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .schedule-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: var(--white);
+    color: #ffffff;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 4vw;
@@ -350,7 +324,7 @@ body {
 /* Location Section */
 .location-section {
     padding: 80px 0;
-    background: var(--white);
+    background: #ffffff;
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -385,7 +359,7 @@ body {
     margin-bottom: 2rem;
     text-transform: lowercase;
     letter-spacing: 2px;
-    color: var(--text-dark);
+    color: #2c2c2c;
 }
 
 .location-details {
@@ -400,7 +374,7 @@ body {
 }
 
 .location-details a {
-    color: var(--text-dark);
+    color: #2c2c2c;
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
@@ -412,8 +386,8 @@ body {
 .btn-secondary {
     display: inline-block;
     padding: 0.8rem 2rem;
-    border: 1px solid var(--text-dark);
-    color: var(--text-dark);
+    border: 1px solid #2c2c2c;
+    color: #2c2c2c;
     text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -423,8 +397,8 @@ body {
 }
 
 .btn-secondary:hover {
-    background: var(--text-dark);
-    color: var(--white);
+    background: #2c2c2c;
+    color: #ffffff;
 }
 
 /* Countdown Section */
@@ -455,14 +429,14 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--overlay-dark);
+    background: rgba(0, 0, 0, 0.67);
 }
 
 .countdown-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: var(--white);
+    color: #ffffff;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 4vw;
@@ -506,7 +480,7 @@ body {
 /* Registry Section */
 .registry-section {
     padding: 80px 0;
-    background: var(--white);
+    background: #ffffff;
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -527,7 +501,7 @@ body {
     font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    color: var(--text-dark);
+    color: #2c2c2c;
 }
 
 .registry-images {
@@ -550,7 +524,7 @@ body {
 /* Dress Code Section */
 .dresscode-section {
     padding: 80px 0;
-    background: var(--white);
+    background: #ffffff;
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -588,13 +562,13 @@ body {
     font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    color: var(--text-dark);
+    color: #2c2c2c;
 }
 
 /* RSVP Section */
 .rsvp-section {
     padding: 80px 0;
-    background: var(--white);
+    background: #ffffff;
 }
 
 .section-title {
@@ -602,7 +576,7 @@ body {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: #2c2c2c;
     font-weight: 400;
     letter-spacing: 2px;
 }
@@ -610,7 +584,7 @@ body {
 .rsvp-subtitle {
     text-align: center;
     font-size: 1rem;
-    color: var(--text-dark);
+    color: #2c2c2c;
     margin-bottom: 3rem;
     font-weight: 400;
 }
@@ -618,7 +592,7 @@ body {
 .rsvp-form {
     max-width: 600px;
     margin: 0 auto;
-    background: var(--white);
+    background: #ffffff;
     padding: 3rem;
 }
 
@@ -630,7 +604,7 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 400;
-    color: var(--text-dark);
+    color: #2c2c2c;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
 }
@@ -642,19 +616,19 @@ body {
     width: 100%;
     padding: 12px 0;
     border: none;
-    border-bottom: 1px solid var(--text-dark);
+    border-bottom: 1px solid #2c2c2c;
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     transition: border-color 0.3s ease;
     background: transparent;
-    color: var(--text-dark);
+    color: #2c2c2c;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-bottom: 2px solid var(--text-dark);
+    border-bottom: 2px solid #2c2c2c;
 }
 
 .radio-group {
@@ -683,9 +657,9 @@ body {
 .submit-btn {
     width: 100%;
     padding: 15px;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--black);
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
     font-size: 0.9rem;
     font-weight: 400;
     cursor: pointer;
@@ -698,7 +672,7 @@ body {
 
 .submit-btn:hover {
     background: transparent;
-    color: var(--black);
+    color: #000000;
 }
 
 .form-success {
@@ -712,32 +686,32 @@ body {
     width: 80px;
     height: 80px;
     margin: 0 auto 1.5rem;
-    background: var(--black);
+    background: #000000;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
-    color: var(--white);
+    color: #ffffff;
     font-weight: bold;
 }
 
 .form-success h3 {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    color: var(--text-dark);
+    color: #2c2c2c;
     margin-bottom: 1rem;
 }
 
 .form-success p {
-    color: var(--text-dark);
+    color: #2c2c2c;
     font-size: 1rem;
 }
 
 /* Footer */
 .footer {
-    background: var(--black);
-    color: var(--white);
+    background: #000000;
+    color: #ffffff;
     text-align: center;
     padding: 2rem 0;
 }
@@ -748,7 +722,7 @@ body {
 }
 
 .footer a {
-    color: var(--white);
+    color: #ffffff;
     text-decoration: underline;
 }
 
@@ -759,22 +733,20 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-image-main {
-        width: 45vw;
-        max-width: 450px;
-        min-width: 300px;
-        height: 70vh;
-        max-height: 850px;
-        min-height: 550px;
+        width: 60vw;
+        max-width: 1200px;
+        max-height: 1470px;
+        min-width: 400px;
+        aspect-ratio: 626 / 766;
     }
     
     .hero-image-left,
     .hero-image-right {
-        width: 25vw;
-        max-width: 320px;
-        min-width: 220px;
-        height: 55vh;
-        max-height: 650px;
-        min-height: 420px;
+        width: 35vw;
+        max-width: 500px;
+        max-height: 750px;
+        min-width: 250px;
+        aspect-ratio: 269 / 403;
     }
 }
 
@@ -784,7 +756,7 @@ body {
         top: 80px;
         left: 0;
         right: 0;
-        background: var(--black);
+        background: #000000;
         flex-direction: column;
         padding: 2rem;
         transform: translateX(-100%);
@@ -841,32 +813,29 @@ body {
     }
     
     .hero-image-main {
-        width: 85%;
-        max-width: 400px;
-        min-width: 280px;
-        height: 60vh;
-        max-height: 700px;
-        min-height: 450px;
+        width: 95%;
+        max-width: 1100px;
+        max-height: 1170px;
+        min-width: 400px;
+        aspect-ratio: 626 / 766;
         order: 2;
     }
     
     .hero-image-left {
-        width: 75%;
-        max-width: 300px;
+        width: 85%;
+        max-width: 500px;
+        max-height: 750px;
         min-width: 250px;
-        height: 45vh;
-        max-height: 500px;
-        min-height: 350px;
+        aspect-ratio: 269 / 403;
         order: 1;
     }
     
     .hero-image-right {
-        width: 75%;
-        max-width: 300px;
+        width: 85%;
+        max-width: 500px;
+        max-height: 750px;
         min-width: 250px;
-        height: 45vh;
-        max-height: 500px;
-        min-height: 350px;
+        aspect-ratio: 269 / 403;
         order: 3;
     }
     
