@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian & Megan | Celebrate with Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <nav class="header-nav">
+                <a href="#our-story" class="nav-link">Our Story</a>
+                <a href="#travel-stay" class="nav-link">Travel & Stay</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-btn">Info</button>
+                    <div class="dropdown-content">
+                        <a href="#event">Event</a>
+                        <a href="#registry">Registry</a>
+                        <a href="#menu">Menu</a>
+                    </div>
+                </div>
+                <a href="#faqs" class="nav-link">FAQs</a>
+            </nav>
+            <div class="header-logo">
+                <a href="#home">Brian & Megan</a>
+            </div>
+            <div class="header-actions">
+                <a href="#rsvp" class="btn-rsvp">RSVP</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-grid">
+                <div class="hero-image hero-image-left">
+                    <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128701-0NAEO7QPYZSBNODRMHXK/olga-solodilova-Idqe3vQ-8qo-unsplash.jpg" alt="Wedding details">
+                </div>
+                <div class="hero-image hero-image-main">
+                    <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128693-URODZ3POBKUKLGTXOHDJ/olga-solodilova-Ty1NNPJUsW8-unsplash.jpg" alt="Couple embracing">
+                    <div class="hero-content">
+                        <h1 class="hero-date">26 · 06 · 2026</h1>
+                    </div>
+                </div>
+                <div class="hero-image hero-image-right">
+                    <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128698-VQXVECA7QGQTT1AOA39N/olga-solodilova-LeQVHiw5nww-unsplash.jpg" alt="Wedding details">
+                </div>
+            </div>
+            <div class="hero-text">
+                <h4>Join us as we embark on a journey of love, joy, and eternal happiness.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section" id="event">
+        <div class="schedule-background"></div>
+        <div class="schedule-overlay"></div>
+        <div class="container">
+            <div class="schedule-content">
+                <h4 class="schedule-intro">Here's a sneak peek of</h4>
+                <h2 class="schedule-title">our special day's schedule</h2>
+                <div class="schedule-timeline">
+                    <div class="timeline-item">
+                        <h3>4:00 PM</h3>
+                        <h4>Ceremony</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>5:00 PM</h3>
+                        <h4>cocktail</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>6:30 PM</h3>
+                        <h4>dinner</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>10:00 PM</h3>
+                        <h4>dancing & fireworks</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="travel-stay">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-image">
+                    <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128708-UCY616CXO4FY293FFB13/alejandro-luengo-Fm_TvVmuHq4-unsplash+%281%29.jpg" alt="Ballyseede Castle">
+                </div>
+                <div class="location-content">
+                    <h2 class="section-heading">location</h2>
+                    <div class="location-details">
+                        <h4><a href="https://www.ballyseedecastle.com/" target="_blank">Ballyseede<br>Luxury Castle Hotel</a></h4>
+                        <h4><a href="https://maps.app.goo.gl/9Ez9B3fJAsP7dTv28" target="_blank">Tralee Co.<br>Kerry, Ireland</a></h4>
+                    </div>
+                    <a href="#travel-stay" class="btn-secondary">travel & stay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="countdown-background"></div>
+        <div class="countdown-overlay"></div>
+        <div class="container">
+            <div class="countdown-content">
+                <h4>Let the countdown begin</h4>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">0</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">0</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">0</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">0</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registry Section -->
+    <section class="registry-section" id="registry">
+        <div class="container">
+            <div class="registry-grid">
+                <div class="registry-content">
+                    <h2 class="section-heading">registry</h2>
+                    <p>While your presence at our wedding is the greatest gift, if you wish to share in our joy through a gift, please visit our registry.</p>
+                    <a href="#registry" class="btn-secondary">registry</a>
+                </div>
+                <div class="registry-images">
+                    <div class="registry-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128721-1Q16G5XDJF5VRX8VYWCP/karolina-grabowska-yH50AWO8ZRo-unsplash.jpg" alt="Wedding cake">
+                    </div>
+                    <div class="registry-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128724-HD4MH3JHVL00UHFUY56H/karolina-grabowska-p2gsaMgCsMg-unsplash.jpg" alt="Wedding details">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section class="dresscode-section" id="faqs">
+        <div class="container">
+            <div class="dresscode-grid">
+                <div class="dresscode-images">
+                    <div class="dresscode-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128721-1Q16G5XDJF5VRX8VYWCP/karolina-grabowska-yH50AWO8ZRo-unsplash.jpg" alt="Dress code">
+                    </div>
+                    <div class="dresscode-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/67bc3eee49fd994193e92d94/1740390128724-HD4MH3JHVL00UHFUY56H/karolina-grabowska-p2gsaMgCsMg-unsplash.jpg" alt="Formal attire">
+                    </div>
+                </div>
+                <div class="dresscode-content">
+                    <h2 class="section-heading">dress code</h2>
+                    <p>For this grand celebration of love, we kindly request that you embrace the elegance of the occasion by wearing formal attire.</p>
+                    <a href="#faqs" class="btn-secondary">faqs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="container">
+            <h2 class="section-title">RSVP</h2>
+            <p class="rsvp-subtitle">Please let us know if you'll be joining us</p>
+            
+            <form class="rsvp-form" id="rsvpForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Number of Guests *</label>
+                    <select id="guests" name="guests" required>
+                        <option value="">Select number of guests</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5+">5+ Guests</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="attendance">Will you be attending? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="yes" required>
+                            <span>Yes, I'll be there!</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attendance" value="no" required>
+                            <span>Sorry, I can't make it</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dietary">Dietary Requirements</label>
+                    <textarea id="dietary" name="dietary" rows="3" placeholder="Please let us know of any dietary restrictions or allergies"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message for the Couple</label>
+                    <textarea id="message" name="message" rows="4" placeholder="We'd love to hear from you!"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit RSVP</button>
+            </form>
+
+            <div class="form-success" id="formSuccess" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>Thank You!</h3>
+                <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>DESIGN BY <a href="https://www.avelawhite.com" target="_blank">AVELÃ WHITE</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
