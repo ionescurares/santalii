@@ -69,7 +69,7 @@ app.post('/api/rsvp', async (req, res) => {
     }
 });
 
-app.get('/*', (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(publicDir, 'index.html'));
 });
 
