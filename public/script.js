@@ -206,7 +206,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const formSuccess = document.getElementById('formSuccess');
 
     if (rsvpForm) {
-        rsvpForm.addEventListener('submit', function(e) {
+        const submitButton = rsvpForm.querySelector('button[type="submit"]');
+
+        rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             // Validate email format before getting form data
@@ -237,43 +239,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Simulate form submission (replace with actual API call later)
-            console.log('RSVP Data:', data);
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Se trimite...';
+            }
 
-            // Hide form and RSVP title/subtitle
-            rsvpForm.style.display = 'none';
-            const rsvpTitle = document.querySelector('.rsvp-section .section-title');
-            const rsvpSubtitle = document.querySelector('.rsvp-section .rsvp-subtitle');
-            if (rsvpTitle) rsvpTitle.style.display = 'none';
-            if (rsvpSubtitle) rsvpSubtitle.style.display = 'none';
-            
-            // Show success message
-            formSuccess.style.display = 'block';
-            formSuccess.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
+            try {
+                const response = await fetch('/api/rsvp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
 
-            // Optional: Send data to server
-            // You can uncomment and modify this when you have a backend
-            /*
-            fetch('/api/rsvp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
+                if (!response.ok) {
+                    const error = await response.json().catch(() => ({ error: 'A apărut o problemă la trimiterea formularului.' }));
+                    throw new Error(error.error || 'A apărut o problemă la trimiterea formularului.');
+                }
+
+                // Hide form and RSVP title/subtitle
                 rsvpForm.style.display = 'none';
+                const rsvpTitle = document.querySelector('.rsvp-section .section-title');
+                const rsvpSubtitle = document.querySelector('.rsvp-section .rsvp-subtitle');
+                if (rsvpTitle) rsvpTitle.style.display = 'none';
+                if (rsvpSubtitle) rsvpSubtitle.style.display = 'none';
+                
+                // Show success message
                 formSuccess.style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your RSVP. Please try again.');
-            });
-            */
+                formSuccess.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            } catch (error) {
+                console.error('RSVP submission failed:', error);
+                showError(error.message || 'Nu am reușit să trimitem RSVP-ul. Încercați din nou.');
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Trimite RSVP';
+                }
+            }
         });
     }
 

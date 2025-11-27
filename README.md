@@ -16,23 +16,35 @@ A beautiful, elegant wedding website for Andreea & Andrei's special day.
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
+- HTML5 / CSS3 / Vanilla JavaScript for the front-end (`public/`)
+- Node.js + Express for the backend
+- Airtable API (via REST) for RSVP data storage
 - Google Fonts (Playfair Display & Lato)
 
-## Setup
+## Local Development
 
-1. Clone this repository
-2. Open `index.html` in your web browser
-3. Or use a local server:
+1. Clone this repository.
+2. Install dependencies:
    ```bash
-   python -m http.server 8000
+   npm install
    ```
+3. Copy `.env.example` to `.env` and fill in your Airtable credentials:
+   ```bash
+   PORT=3000
+   AIRTABLE_API_KEY=your_api_key
+   AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
+   AIRTABLE_TABLE_ID=tblXXXXXXXXXXXXXX
+   ```
+4. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+   The site is served from `http://localhost:3000` and proxies form submissions to `/api/rsvp`.
 
-## GitHub Pages
+## Production Deployment
 
-This site is hosted on GitHub Pages. Visit: `https://[your-username].github.io/[repository-name]/`
+Deploy the entire Node app to any host that supports custom servers (Render, Railway, Fly.io, Vercel, etc.).  
+Set the same environment variables from the `.env.example` on your host so the RSVP endpoint can write to Airtable.
 
 ## Customization
 
