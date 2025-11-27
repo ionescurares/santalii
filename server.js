@@ -20,7 +20,7 @@ app.use(express.static(publicDir));
 app.post('/api/rsvp', async (req, res) => {
     const { name, phone, guests, attendance } = req.body || {};
 
-    if (!name || !phone || !attendance) {
+    if (!name || !attendance) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
 
@@ -39,7 +39,7 @@ app.post('/api/rsvp', async (req, res) => {
             {
                 fields: {
                     Name: name,
-                    Phone: phone,
+                    Phone: phone || 'Nespecificat',
                     Guests: attendance === 'yes' ? guests : 'Nu participă',
                     Attendance: attendance
                 }

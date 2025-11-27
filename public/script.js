@@ -237,8 +237,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Validate phone format before getting form data
             const phoneInput = document.getElementById('phone');
-            if (phoneInput && phoneInput.value.trim()) {
-                if (!isValidPhone(phoneInput.value.trim())) {
+            const phoneValue = phoneInput ? phoneInput.value.trim() : '';
+            if (phoneInput && phoneValue) {
+                if (!isValidPhone(phoneValue)) {
                     phoneInput.setCustomValidity('Vă rugăm să introduceți un număr de telefon valid');
                     phoneInput.reportValidity();
                     return;
@@ -255,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const data = {
                 name: formData.get('name'),
-                phone: formData.get('phone'),
+                phone: phoneValue,
                 guests: shouldCollectGuests ? guestsSelection : '',
                 attendance: attendanceValue
             };
@@ -318,11 +319,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateForm(data) {
         if (!data.name || data.name.trim() === '') {
             showError('Vă rugăm să introduceți numele complet');
-            return false;
-        }
-
-        if (!data.phone || !isValidPhone(data.phone)) {
-            showError('Vă rugăm să introduceți un număr de telefon valid');
             return false;
         }
 
