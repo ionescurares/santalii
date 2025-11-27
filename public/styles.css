@@ -389,15 +389,6 @@
     text-align: center;
 }
 
-.location-link {
-    color: inherit;
-    text-decoration: underline;
-}
-
-.location-link:hover {
-    opacity: 0.8;
-}
-
 .section-heading {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
@@ -657,7 +648,6 @@
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="tel"],
 .form-group select,
 .form-group textarea {
     width: 100%;
