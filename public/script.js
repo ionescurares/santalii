@@ -93,7 +93,7 @@ function initHeroCountdown() {
 // Set custom validation messages in Romanian
 function setupCustomValidation() {
     const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
     const guestsSelect = document.getElementById('guests');
     const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
     
@@ -112,21 +112,21 @@ function setupCustomValidation() {
         });
     }
     
-    // Email field validation
-    if (emailInput) {
-        emailInput.addEventListener('invalid', function(e) {
-            if (emailInput.validity.valueMissing) {
-                emailInput.setCustomValidity('Vă rugăm să introduceți adresa de email');
-            } else if (emailInput.validity.typeMismatch) {
-                emailInput.setCustomValidity('Vă rugăm să introduceți o adresă de email validă');
+    // Phone field validation
+    if (phoneInput) {
+        phoneInput.addEventListener('invalid', function() {
+            if (phoneInput.validity.valueMissing) {
+                phoneInput.setCustomValidity('Vă rugăm să introduceți numărul de telefon');
+            } else if (phoneInput.validity.patternMismatch || !isValidPhone(phoneInput.value)) {
+                phoneInput.setCustomValidity('Vă rugăm să introduceți un număr de telefon valid');
             } else {
-                emailInput.setCustomValidity('');
+                phoneInput.setCustomValidity('');
             }
         });
         
         // Clear validation message when user starts typing
-        emailInput.addEventListener('input', function() {
-            emailInput.setCustomValidity('');
+        phoneInput.addEventListener('input', function() {
+            phoneInput.setCustomValidity('');
         });
     }
     
@@ -204,6 +204,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form submission handling
     const rsvpForm = document.getElementById('rsvpForm');
     const formSuccess = document.getElementById('formSuccess');
+    const guestsGroup = document.getElementById('guestsGroup');
+    const guestsSelect = document.getElementById('guests');
+    const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+
+    function updateGuestsVisibility(attendanceValue) {
+        if (!guestsGroup || !guestsSelect) return;
+
+        if (attendanceValue === 'yes') {
+            guestsGroup.style.display = 'block';
+            guestsSelect.required = true;
+        } else {
+            guestsGroup.style.display = 'none';
+            guestsSelect.required = false;
+            guestsSelect.value = '';
+        }
+    }
+
+    attendanceRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateGuestsVisibility(radio.value);
+        });
+    });
+
+    const initiallySelected = Array.from(attendanceRadios).find(radio => radio.checked);
+    updateGuestsVisibility(initiallySelected ? initiallySelected.value : null);
 
     if (rsvpForm) {
         const submitButton = rsvpForm.querySelector('button[type="submit"]');
@@ -211,25 +236,27 @@ document.addEventListener('DOMContentLoaded', function() {
         rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Validate email format before getting form data
-            const emailInput = document.getElementById('email');
-            if (emailInput && emailInput.value.trim()) {
-                if (!isValidEmail(emailInput.value.trim())) {
-                    emailInput.setCustomValidity('Vă rugăm să introduceți o adresă de email validă');
-                    emailInput.reportValidity();
+            // Validate phone format before getting form data
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput && phoneInput.value.trim()) {
+                if (!isValidPhone(phoneInput.value.trim())) {
+                    phoneInput.setCustomValidity('Vă rugăm să introduceți un număr de telefon valid');
+                    phoneInput.reportValidity();
                     return;
                 } else {
-                    emailInput.setCustomValidity('');
+                    phoneInput.setCustomValidity('');
                 }
             }
 
             // Get form data
             const formData = new FormData(rsvpForm);
+            const attendanceValue = formData.get('attendance');
+            const guestsValue = attendanceValue === 'yes' ? formData.get('guests') : '';
             const data = {
                 name: formData.get('name'),
-                email: formData.get('email'),
-                guests: formData.get('guests'),
-                attendance: formData.get('attendance')
+                phone: formData.get('phone'),
+                guests: guestsValue,
+                attendance: attendanceValue
             };
 
             // Validate form
@@ -288,13 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        if (!data.email || !isValidEmail(data.email)) {
-            showError('Vă rugăm să introduceți o adresă de email validă');
-            return false;
-        }
-
-        if (!data.guests) {
-            showError('Vă rugăm să selectați numărul de invitați');
+        if (!data.phone || !isValidPhone(data.phone)) {
+            showError('Vă rugăm să introduceți un număr de telefon valid');
             return false;
         }
 
@@ -303,12 +325,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
+        if (data.attendance === 'yes' && !data.guests) {
+            showError('Vă rugăm să selectați numărul de invitați');
+            return false;
+        }
+
         return true;
     }
 
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+    function isValidPhone(phone) {
+        const phoneRegex = /^\+?[0-9()\s-]{7,20}$/;
+        return phoneRegex.test(phone);
     }
 
     function showError(message) {

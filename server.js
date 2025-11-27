@@ -18,10 +18,14 @@ app.use(express.json());
 app.use(express.static(publicDir));
 
 app.post('/api/rsvp', async (req, res) => {
-    const { name, email, guests, attendance } = req.body || {};
+    const { name, phone, guests, attendance } = req.body || {};
 
-    if (!name || !email || !guests || !attendance) {
+    if (!name || !phone || !attendance) {
         return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    if (attendance === 'yes' && !guests) {
+        return res.status(400).json({ error: 'Please let us know how many guests are coming.' });
     }
 
     if (!AIRTABLE_API_KEY || !AIRTABLE_BASE_ID || !AIRTABLE_TABLE_ID) {
@@ -35,8 +39,8 @@ app.post('/api/rsvp', async (req, res) => {
             {
                 fields: {
                     Name: name,
-                    Email: email,
-                    Guests: guests,
+                    Phone: phone,
+                    Guests: attendance === 'yes' ? guests : 'Nu participă',
                     Attendance: attendance
                 }
             }

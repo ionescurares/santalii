@@ -2965,20 +2965,8 @@
           </div>
 
           <div class="form-group">
-              <label for="email">Adresa de email *</label>
-              <input type="email" id="email" name="email" required>
-          </div>
-
-          <div class="form-group">
-              <label for="guests">Mai vii cu cineva? *</label>
-              <select id="guests" name="guests" required>
-                  <option value="" disabled selected>Alegeți numărul de invitați</option>
-                  <option value="1">1 invitat</option>
-                  <option value="2">2 invitați</option>
-                  <option value="3">3 invitați</option>
-                  <option value="4">4 invitați</option>
-                  <option value="5+">5+ invitați</option>
-              </select>
+              <label for="phone">Număr de telefon *</label>
+              <input type="tel" id="phone" name="phone" required pattern="[0-9+()\s-]{7,15}">
           </div>
 
           <div class="form-group">
@@ -2993,6 +2981,18 @@
                       <span>Cu mare regret, nu!</span>
                   </label>
               </div>
+          </div>
+
+          <div class="form-group" id="guestsGroup" style="display: none;">
+              <label for="guests">Mai vii cu cineva? *</label>
+              <select id="guests" name="guests">
+                  <option value="" disabled selected>Alegeți numărul de invitați</option>
+                  <option value="1">1 invitat</option>
+                  <option value="2">2 invitați</option>
+                  <option value="3">3 invitați</option>
+                  <option value="4">4 invitați</option>
+                  <option value="5+">5+ invitați</option>
+              </select>
           </div>
 
 
