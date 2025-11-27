@@ -1,62 +1,59 @@
-# Santalii - Wedding Website
+# Santalii
 
-A beautiful, elegant wedding website for Andreea & Andrei's special day.
+An elegant single-page wedding experience handcrafted for **Andreea & Andrei**.  
+Hero photography, cinematic typography, and soft neutrals set the tone while the RSVP flow captures guests directly to Airtable through a minimal Node backend.
 
-## Features
+## Highlights
 
-- **Elegant Design**: Modern, minimalist design with black and white aesthetic
-- **Hero Section**: Three-image layout with date overlay
-- **Event Schedule**: Timeline of wedding day events
-- **Location Information**: Venue details and travel information
-- **Countdown Timer**: Live countdown to the wedding date (June 26, 2026)
-- **Registry Section**: Gift registry information
-- **Dress Code**: Formal attire guidelines
-- **RSVP Form**: Interactive RSVP form with validation
-- **Fully Responsive**: Works perfectly on all devices
+- **Immersive hero** with three curated portraits, date monogram, and scroll indicator.
+- **Story-driven sections**: love story, schedule, venue, dress code, registry, and photo previews.
+- **Dual countdowns**: Squarespace timer plus a bespoke full-width “Număr nopțile, număr zilele” hero.
+- **Refined RSVP experience**:
+  - Romanian validation copy + custom success state.
+  - Conditional questions (attendance toggle drives guest requirements).
+  - Smooth scroll CTA and scroll animations throughout.
+- **Squarespace-inspired design system**: CSS vars for typography, spacing, and HSL palette.
+- **Responsive everywhere**: optimized image ratios, flex/fallbacks, and scroll effects on mobile.
 
-## Technologies Used
+## Stack
 
-- HTML5 / CSS3 / Vanilla JavaScript for the front-end (`public/`)
-- Node.js + Express for the backend
-- Airtable API (via REST) for RSVP data storage
-- Google Fonts (Playfair Display & Lato)
+| Layer        | Tech                                                    |
+|--------------|---------------------------------------------------------|
+| Front-end    | HTML5, CSS3, vanilla JS (served from `public/`)         |
+| Animation/UI | IntersectionObserver, custom countdown, Squarespace UI  |
+| Backend      | Node.js + Express (`server.js`)                         |
+| Data store   | Airtable REST API (RSVP submissions)                    |
+| Tooling      | npm scripts, nodemon, dotenv                            |
 
-## Local Development
+## Local Setup
 
-1. Clone this repository.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Copy `.env.example` to `.env` and fill in your Airtable credentials:
-   ```bash
-   PORT=3000
-   AIRTABLE_API_KEY=your_api_key
-   AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
-   AIRTABLE_TABLE_ID=tblXXXXXXXXXXXXXX
-   ```
-4. Start the dev server:
-   ```bash
-   npm run dev
-   ```
-   The site is served from `http://localhost:3000` and proxies form submissions to `/api/rsvp`.
+```bash
+git clone https://github.com/ionescurares/santalii.git
+cd santalii
+npm install
+cp .env.example .env   # add Airtable credentials
+npm run dev
+```
 
-## Production Deployment
+- App runs at `http://localhost:3000`.
+- Static assets live in `public/`; API requests hit `/api/rsvp`.
 
-Deploy the entire Node app to any host that supports custom servers (Render, Railway, Fly.io, Vercel, etc.).  
-Set the same environment variables from the `.env.example` on your host so the RSVP endpoint can write to Airtable.
+## Deploying
 
-## Customization
+1. Pick any Node-friendly host (Render, Railway, Fly.io, Vercel, etc.).
+2. Set `PORT`, `AIRTABLE_API_KEY`, `AIRTABLE_BASE_ID`, `AIRTABLE_TABLE_ID`.
+3. Deploy the entire repo (front-end + Express server).  
+4. Optional: keep GitHub Pages for static preview, but production RSVP must run through the Node app.
 
-To customize this website for your own wedding:
+## Personalizing
 
-1. Update couple names in `index.html`
-2. Change the wedding date in `index.html` and `script.js`
-3. Update venue information in the location section
-4. Modify colors in `styles.css` CSS variables
-5. Replace images with your own wedding photos
+- Update copy, names, and dates directly in `public/index.html`.
+- Swap hero/location images in `public/assets/`.
+- Adjust colors/spacing via `public/styles.css` variables.
+- Change countdown dates in `public/script.js`.
+- Map the Airtable fields in `server.js` to fit your base.
 
 ## License
 
-Free to use for personal wedding websites.
-
+Free for personal wedding projects.  
+If you launch your own celebration with it, send love! 💌
