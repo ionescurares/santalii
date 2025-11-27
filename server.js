@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.static(publicDir));
 
 app.post('/api/rsvp', async (req, res) => {
-    const { name, email, guests, attendance, dietary, message } = req.body || {};
+    const { name, email, guests, attendance } = req.body || {};
 
     if (!name || !email || !guests || !attendance) {
         return res.status(400).json({ error: 'Missing required fields' });
@@ -37,9 +37,7 @@ app.post('/api/rsvp', async (req, res) => {
                     Name: name,
                     Email: email,
                     Guests: guests,
-                    Attendance: attendance,
-                    Dietary: dietary || '',
-                    Message: message || ''
+                    Attendance: attendance
                 }
             }
         ]
@@ -55,14 +53,23 @@ app.post('/api/rsvp', async (req, res) => {
             body: JSON.stringify(payload)
         });
 
-        if (!response.ok) {
-            const errorBody = await response.text();
-            console.error('Airtable error:', errorBody);
-            return res.status(502).json({ error: 'Failed to submit RSVP. Please try again later.' });
+        const responseBodyText = await response.text();
+        let responseBody;
+        try {
+            responseBody = responseBodyText ? JSON.parse(responseBodyText) : null;
+        } catch {
+            responseBody = responseBodyText;
         }
 
-        const data = await response.json();
-        return res.status(201).json({ success: true, records: data.records });
+        if (!response.ok) {
+            console.error('Airtable error response:', responseBody);
+            const errorMessage =
+                responseBody?.error?.message ||
+                'Failed to submit RSVP. Please try again later.';
+            return res.status(response.status).json({ error: errorMessage });
+        }
+
+        return res.status(201).json({ success: true, records: responseBody?.records || [] });
     } catch (error) {
         console.error('RSVP submission failed:', error);
         return res.status(500).json({ error: 'Unexpected server error' });

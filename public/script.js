@@ -229,9 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: formData.get('name'),
                 email: formData.get('email'),
                 guests: formData.get('guests'),
-                attendance: formData.get('attendance'),
-                dietary: formData.get('dietary'),
-                message: formData.get('message')
+                attendance: formData.get('attendance')
             };
 
             // Validate form
