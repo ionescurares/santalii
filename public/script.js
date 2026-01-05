@@ -203,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form submission handling
     const rsvpForm = document.getElementById('rsvpForm');
     const formSuccess = document.getElementById('formSuccess');
+    const successMessage = formSuccess ? formSuccess.querySelector('p') : null;
 
     if (rsvpForm) {
         const submitButton = rsvpForm.querySelector('button[type="submit"]');
@@ -297,7 +298,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (rsvpTitle) rsvpTitle.style.display = 'none';
                 if (rsvpSubtitle) rsvpSubtitle.style.display = 'none';
                 
-                // Show success message
+                // Show success message (different text for "no" attendance)
+                if (successMessage) {
+                    successMessage.textContent = attendanceValue === 'no'
+                        ? 'Ne pare rău că nu poți ajunge, dar sigur găsim alte ocazii să sărbătorim ❤️'
+                        : 'Mesajul tău a fost primit. Abia așteptăm să sărbătorim împreună!';
+                }
                 formSuccess.style.display = 'block';
                 formSuccess.scrollIntoView({
                     behavior: 'smooth',
