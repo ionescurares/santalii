@@ -217,6 +217,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (attendanceValue === 'yes') {
                 guestsGroup.style.display = 'block';
                 guestsSelect.required = true;
+                // Set default value to "1" if no value is selected or if value is empty
+                if (!guestsSelect.value || guestsSelect.value === '') {
+                    guestsSelect.value = '1';
+                }
             } else {
                 guestsGroup.style.display = 'none';
                 guestsSelect.required = false;
@@ -232,6 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const initiallySelected = Array.from(attendanceRadios).find(radio => radio.checked);
         updateGuestsVisibility(initiallySelected ? initiallySelected.value : null);
+        
+        // Ensure default value is set if guests group is visible
+        if (guestsSelect && guestsGroup.style.display !== 'none' && !guestsSelect.value) {
+            guestsSelect.value = '1';
+        }
 
         rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
